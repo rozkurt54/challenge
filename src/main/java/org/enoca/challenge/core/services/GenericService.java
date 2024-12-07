@@ -18,9 +18,9 @@ public abstract class GenericService<
         RP extends BaseRepository<ID, E>
         > implements IGenericService<RD, RQD, E, ID>{
 
-    private final MM mapper;
+    protected final MM mapper;
 
-    private final RP repository;
+    protected final RP repository;
 
     public GenericService(MM mapper, RP repository) {
 

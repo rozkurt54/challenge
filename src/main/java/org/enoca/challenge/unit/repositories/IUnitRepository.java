@@ -8,4 +8,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IUnitRepository extends BaseRepository<String, Unit> {
 
+    Boolean existsByName(String name);
+
+    Boolean existsByShortName(String shortName);
+
 }

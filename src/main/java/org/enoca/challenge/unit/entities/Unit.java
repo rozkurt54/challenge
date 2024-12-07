@@ -3,8 +3,6 @@ package org.enoca.challenge.unit.entities;
 import jakarta.persistence.Entity;
 import org.enoca.challenge.core.entities.BaseEntity;
 
-import java.time.Instant;
-
 @Entity
 public class Unit extends BaseEntity<String> {
 
