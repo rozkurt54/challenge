@@ -1,8 +1,11 @@
 package org.enoca.challenge.core.dtos.responses;
 
+import jakarta.persistence.MappedSuperclass;
+
 import java.io.Serializable;
 import java.time.Instant;
 
+@MappedSuperclass
 public abstract class ResponseDto<ID extends Serializable> implements IResponseDto<ID> {
 
     private final ID id;

@@ -8,8 +8,6 @@ import java.time.Instant;
 @MappedSuperclass
 public abstract class BaseEntity<ID extends Serializable> implements IBaseEntity<ID> {
 
-    @Transient
-    private final Instant instant;
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -20,23 +18,28 @@ public abstract class BaseEntity<ID extends Serializable> implements IBaseEntity
 
     private Instant editedAt;
 
-    private Boolean markedAsDeleted;
+    private Boolean markedAsDeleted = false;
 
     public BaseEntity() {
 
-        this.instant = Instant.now();
-        this.setEditedAt(instant);
+        var instant = Instant.now();
+        this.createdAt = instant;
+        this.editedAt = instant;
 
     }
 
     @Override
     public ID getId() {
+
         return this.id;
+
     }
 
     @Override
     public void setId(ID id) {
+
         this.id=id;
+
     }
 
     @Override
@@ -51,7 +54,7 @@ public abstract class BaseEntity<ID extends Serializable> implements IBaseEntity
 
     @Override
     public void setEditedAt(Instant instant) {
-        this.editedAt = editedAt;
+        this.editedAt = instant;
     }
 
     @Override
@@ -70,4 +73,9 @@ public abstract class BaseEntity<ID extends Serializable> implements IBaseEntity
         this.markedAsDeleted = false;
         this.setEditedAt(Instant.now());
     }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
 }

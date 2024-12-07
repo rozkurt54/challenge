@@ -3,7 +3,7 @@ package org.enoca.challenge.core.services;
 import org.enoca.challenge.core.dtos.requests.IRequestDto;
 import org.enoca.challenge.core.dtos.responses.ResponseDto;
 import org.enoca.challenge.core.entities.BaseEntity;
-import org.enoca.challenge.core.mappers.BaseMapper;
+import org.enoca.challenge.core.mappers.IMapper;
 import org.enoca.challenge.core.repositories.BaseRepository;
 
 import java.io.Serializable;
@@ -14,9 +14,9 @@ public abstract class GenericService<
         RQD extends IRequestDto,
         E extends BaseEntity<ID>,
         ID extends Serializable,
-        MM extends BaseMapper<RD, RQD, ID, E>,
+        MM extends IMapper<RD, RQD, ID, E>,
         RP extends BaseRepository<ID, E>
-        > implements IGenericService<RD, RQD, E, ID, MM>{
+        > implements IGenericService<RD, RQD, E, ID>{
 
     private final MM mapper;
 

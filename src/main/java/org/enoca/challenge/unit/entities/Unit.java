@@ -1,7 +1,9 @@
-package org.enoca.challenge.product.entities;
+package org.enoca.challenge.unit.entities;
 
 import jakarta.persistence.Entity;
 import org.enoca.challenge.core.entities.BaseEntity;
+
+import java.time.Instant;
 
 @Entity
 public class Unit extends BaseEntity<String> {
@@ -25,4 +27,5 @@ public class Unit extends BaseEntity<String> {
     public void setShortName(String shortName) {
         this.shortName = shortName;
     }
+
 }

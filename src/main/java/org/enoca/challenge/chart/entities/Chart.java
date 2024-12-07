@@ -1,6 +1,7 @@
 package org.enoca.challenge.chart.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import org.enoca.challenge.core.entities.BaseEntity;
 
 import java.math.BigDecimal;
@@ -9,6 +10,7 @@ import java.util.List;
 @Entity
 public class Chart extends BaseEntity<String> {
 
+    @OneToMany
     private List<ChartRow> cartRows;
 
     private BigDecimal getCartItemsPriceSum() {

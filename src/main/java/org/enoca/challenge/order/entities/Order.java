@@ -3,6 +3,7 @@ package org.enoca.challenge.order.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import org.enoca.challenge.core.entities.BaseEntity;
 import org.enoca.challenge.customer.entities.Customer;
 
@@ -10,6 +11,7 @@ import java.time.Instant;
 import java.util.List;
 
 @Entity
+@Table(name = "orders") // The word order is a reserved keyword for mysql.
 public class Order extends BaseEntity<String> {
 
     @ManyToOne

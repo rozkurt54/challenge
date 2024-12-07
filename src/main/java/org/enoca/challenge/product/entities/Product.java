@@ -3,6 +3,7 @@ package org.enoca.challenge.product.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import org.enoca.challenge.core.entities.BaseEntity;
+import org.enoca.challenge.unit.entities.Unit;
 
 import java.math.BigDecimal;
 
