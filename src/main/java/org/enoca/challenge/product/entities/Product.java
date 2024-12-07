@@ -1,6 +1,7 @@
 package org.enoca.challenge.product.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import org.enoca.challenge.core.entities.BaseEntity;
 import org.enoca.challenge.unit.entities.Unit;
@@ -12,7 +13,7 @@ public class Product extends BaseEntity<String> {
 
     private String name;
 
-    @OneToOne
+    @ManyToOne
     private Unit unit;
 
     private BigDecimal taxRate;

@@ -11,18 +11,18 @@ public class UnitRequestDto implements IRequestDto {
 
     @NotBlank(message = "Unit short name must not be null or blank")
     @Size(max = 3, min = 1, message = "Unit short name must be 1-3 chars length.")
-    private final String sortName;
+    private final String shortName;
 
-    public UnitRequestDto(String name, String sortName) {
+    public UnitRequestDto(String name, String shortName) {
         this.name = name;
-        this.sortName = sortName;
+        this.shortName = shortName;
     }
 
-    public @NotBlank(message = "Unit name must not be null or blank") String getName() {
+    public String getName() {
         return name;
     }
 
-    public @NotBlank(message = "Unit short name must not be null or blank") @Size(max = 3, min = 1, message = "Unit short name must be 1-3 chars length.") String getSortName() {
-        return sortName;
+    public String getShortName() {
+        return shortName;
     }
 }

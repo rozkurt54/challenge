@@ -15,10 +15,9 @@ public interface IUnitMapper extends IMapper<UnitResponseDto, UnitRequestDto, St
 
     @Override
     @Mapping(source = "name", target = "name")
-    @Mapping(source = "sortName", target = "sortName")
+    @Mapping(source = "shortName", target = "shortName")
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "markedAsDeleted", ignore = true)
     Unit toEntity(UnitRequestDto RequestDto);
 
 }
