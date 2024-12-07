@@ -1,9 +1,11 @@
 package org.enoca.challenge.chart.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import org.enoca.challenge.core.entities.BaseEntity;
 import org.enoca.challenge.product.entities.Product;
+import org.enoca.challenge.unit.entities.Unit;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -15,6 +17,9 @@ public class ChartRow extends BaseEntity<String> {
     private Product product;
 
     private Double quantity;
+
+    @ManyToOne
+    private Unit unit;
 
     private BigDecimal unitPrice;
 

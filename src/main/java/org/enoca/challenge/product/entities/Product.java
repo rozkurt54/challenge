@@ -15,9 +15,13 @@ public class Product extends BaseEntity<String> {
     @ManyToOne
     private Unit unit;
 
+    private Float stockQuantity;
+
     private BigDecimal taxRate;
 
     private BigDecimal currentPrice;
+
+    //TODO Currencies must be implemented.
 
     public String getName() {
         return name;
@@ -74,5 +78,15 @@ public class Product extends BaseEntity<String> {
         }
 
         this.currentPrice = currentPrice;
+    }
+
+    public Float getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(Float stockQuantity) {
+
+        this.stockQuantity = stockQuantity;
+
     }
 }

@@ -4,8 +4,8 @@ import org.enoca.challenge.core.services.GenericService;
 import org.enoca.challenge.unit.exceptions.UnitNameAlreadyExistsException;
 import org.enoca.challenge.unit.exceptions.UnitShortNameAlreadyExistsException;
 import org.enoca.challenge.unit.repositories.IUnitRepository;
-import org.enoca.challenge.unit.Dtos.requests.UnitRequestDto;
-import org.enoca.challenge.unit.Dtos.responses.UnitResponseDto;
+import org.enoca.challenge.unit.dtos.requests.UnitRequestDto;
+import org.enoca.challenge.unit.dtos.responses.UnitResponseDto;
 import org.enoca.challenge.unit.entities.Unit;
 import org.enoca.challenge.unit.mappers.IUnitMapper;
 import org.springframework.stereotype.Service;
@@ -16,8 +16,11 @@ import java.time.Instant;
 public class UnitManager
         extends GenericService<UnitResponseDto, UnitRequestDto, Unit, String, IUnitMapper, IUnitRepository>
         implements IUnitService {
+
     public UnitManager(IUnitMapper mapper, IUnitRepository repository) {
+
         super(mapper, repository);
+
     }
 
     @Override
@@ -37,6 +40,18 @@ public class UnitManager
     public UnitResponseDto update(String id, UnitRequestDto requestDTO) {
 
         var entity = getOneEntity(id);
+
+        if(!entity.getName().equals(requestDTO.getName())) {
+
+            checkShortNameAlreadyExists(requestDTO.getName());
+
+        }
+
+        if (!entity.getShortName().equals(requestDTO.getShortName())) {
+
+            checkShortNameAlreadyExists(requestDTO.getShortName());
+
+        }
 
         entity.setName(requestDTO.getName());
         entity.setShortName(requestDTO.getShortName());
@@ -60,7 +75,7 @@ public class UnitManager
 
             var message = String.format("Given name already exists: %s", name);
 
-            throw new UnitNameAlreadyExistsException();
+            throw new UnitNameAlreadyExistsException(message);
         }
 
     }

@@ -1,13 +1,8 @@
-package org.enoca.challenge.order.tools;
+package org.enoca.challenge.core.tools;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class StandardizedResponseUtil {
 
@@ -34,24 +29,32 @@ public class StandardizedResponseUtil {
 
     }
 
-    public static Map<String, Object> createErrorResponse(HttpStatusCode httpStatusCode, String... messages) {
+    public static Map<String, Object> createErrorResponse(HttpStatusCode httpStatusCode, String message) {
 
 
         Map<String, Object> responseMap = new HashMap<>();
         responseMap.put("code", httpStatusCode.value());
 
-        if (messages.length > 1) {
-            var messageList = new ArrayList<String>(Arrays.asList(messages));
-            responseMap.put("messages", messageList);
-
-            return responseMap;
-        }
-
-        responseMap.put("message", messages[0]);
+        responseMap.put("message", message);
 
         return responseMap;
 
     }
+
+    public static Map<String, Object> createErrorResponse(HttpStatusCode httpStatusCode, Map<String, String> messages) {
+
+
+        Map<String, Object> responseMap = new HashMap<>();
+
+        responseMap.put("code", httpStatusCode.value());
+
+        responseMap.put("message", messages);
+
+        return responseMap;
+
+    }
+
+
 
 
 }

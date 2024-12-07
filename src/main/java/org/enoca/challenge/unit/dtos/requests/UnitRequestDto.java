@@ -1,4 +1,4 @@
-package org.enoca.challenge.unit.Dtos.requests;
+package org.enoca.challenge.unit.dtos.requests;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

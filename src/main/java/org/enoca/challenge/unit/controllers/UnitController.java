@@ -1,6 +1,8 @@
 package org.enoca.challenge.unit.controllers;
 
-import org.enoca.challenge.unit.Dtos.requests.UnitRequestDto;
+import jakarta.validation.Valid;
+import org.enoca.challenge.core.tools.StandardizedResponseUtil;
+import org.enoca.challenge.unit.dtos.requests.UnitRequestDto;
 import org.enoca.challenge.unit.services.IUnitService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +23,11 @@ public class UnitController {
 
         var result = iUnitService.getAll();
 
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        var message = String.format("%d results are retrieved.", result.size());
+
+        var response = StandardizedResponseUtil.createSuccessResponse(HttpStatus.OK, message, result);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
 
@@ -30,25 +36,37 @@ public class UnitController {
 
         var result = iUnitService.getOne(id);
 
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        var message = String.format("%s id's unit has retrieved.", result.getId());
+
+        var response = StandardizedResponseUtil.createSuccessResponse(HttpStatus.OK, message, result);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
 
     @PostMapping()
-    public ResponseEntity<?> createUnit(@RequestBody UnitRequestDto unitRequestDto) {
+    public ResponseEntity<?> createUnit(@Valid @RequestBody UnitRequestDto unitRequestDto) {
 
         var result = iUnitService.create(unitRequestDto);
 
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        var message = String.format("%s named unit has been created.", result.getName());
+
+        var response = StandardizedResponseUtil.createSuccessResponse(HttpStatus.OK, message, result);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUnit(@PathVariable String id, @RequestBody UnitRequestDto unitRequestDto) {
+    public ResponseEntity<?> updateUnit(@PathVariable String id, @Valid @RequestBody UnitRequestDto unitRequestDto) {
 
         var result =  iUnitService.update(id, unitRequestDto);
 
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        var message = String.format("%s id's unit has updated.", result.getId());
+
+        var response = StandardizedResponseUtil.createSuccessResponse(HttpStatus.OK, message, result);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
 
@@ -57,7 +75,11 @@ public class UnitController {
 
         iUnitService.delete(id);
 
-        return ResponseEntity.ok().build();
+        var message = String.format("%s id's unit has been deleted", id);
+
+        var response = StandardizedResponseUtil.createSuccessResponse(HttpStatus.OK, message);
+
+        return ResponseEntity.ok(response);
 
     }
 
