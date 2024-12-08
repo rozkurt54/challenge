@@ -12,7 +12,8 @@ public interface IGenericService<
         RD extends ResponseDto<ID>,
         RQD extends IRequestDto,
         E extends BaseEntity<ID>,
-        ID extends Serializable
+        ID extends Serializable,
+        MM extends IMapper<RD, RQD, ID, E>
         > {
 
     List<RD> getAll();
@@ -30,5 +31,7 @@ public interface IGenericService<
     void delete(ID id);
 
     Boolean existsById(ID id);
+
+    MM getMapper();
 
 }

@@ -14,6 +14,6 @@ public interface IMapper<RD extends ResponseDto<ID>, RQD extends IRequestDto, ID
 
     RD toResponse(E entity);
 
-    E toEntity(RQD RequestDto);
+    E toEntity(RQD requestDto);
 
 }

@@ -15,9 +15,13 @@ public class Product extends BaseEntity<String> {
     @ManyToOne
     private Unit unit;
 
-    private BigDecimal taxRate;
+    private Float stockQuantity;
+
+    private Double taxRate;
 
     private BigDecimal currentPrice;
+
+    //TODO Currencies must be implemented.
 
     public String getName() {
         return name;
@@ -41,15 +45,15 @@ public class Product extends BaseEntity<String> {
 
     }
 
-    public BigDecimal getTaxRate() {
+    public Double getTaxRate() {
 
         return taxRate;
 
     }
 
-    public void setTaxRate(BigDecimal taxRate) {
+    public void setTaxRate(Double taxRate) {
 
-        if (taxRate.compareTo(BigDecimal.ZERO) < 0) {
+        if (taxRate  < 0) {
 
             throw new RuntimeException("Tax rate cannot be less than zero");
 
@@ -74,5 +78,15 @@ public class Product extends BaseEntity<String> {
         }
 
         this.currentPrice = currentPrice;
+    }
+
+    public Float getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(Float stockQuantity) {
+
+        this.stockQuantity = stockQuantity;
+
     }
 }
