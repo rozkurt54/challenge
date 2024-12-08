@@ -31,7 +31,7 @@ public class OrderRow extends BaseEntity<String> {
 
         return this.product.getCurrentPrice()
                 .divide(BigDecimal.valueOf(100), RoundingMode.valueOf(4))
-                .multiply(product.getTaxRate());
+                .multiply(BigDecimal.valueOf(product.getTaxRate()));
 
     }
 

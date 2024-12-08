@@ -18,43 +18,53 @@ public class ProductRequestDto implements IRequestDto {
     private final String unitId;
 
     @NotNegative
-    private final Float stockQuantity;
+    private final Float stockAmount;
 
     @NotNegative
-    private final BigDecimal taxRate;
+    private final Double taxRate;
 
     @NotNegative
     private final BigDecimal currentPrice;
 
     public ProductRequestDto(String name,
                              String unitId,
-                             Float stockQuantity,
-                             BigDecimal taxRate,
+                             Float stockAmount,
+                             double taxRate,
                              BigDecimal currentPrice) {
         this.name = name;
         this.unitId = unitId;
-        this.stockQuantity = stockQuantity;
+        this.stockAmount = stockAmount;
         this.taxRate = taxRate;
         this.currentPrice = currentPrice;
     }
 
     public String getName() {
+
         return name;
+
     }
 
     public String getUnitId() {
+
         return unitId;
+
     }
 
-    public BigDecimal getTaxRate() {
+    public Double getTaxRate() {
+
         return taxRate;
+
     }
 
     public BigDecimal getCurrentPrice() {
+
         return currentPrice;
+
     }
 
-    public float getStockQuantity() {
-        return stockQuantity;
+    public Float getStockAmount() {
+
+        return stockAmount;
+
     }
 }

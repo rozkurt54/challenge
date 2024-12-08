@@ -12,13 +12,13 @@ public class ProductResponseDto extends ResponseDto<String> {
 
     private final UnitResponseDto unit;
 
-    private final BigDecimal taxRate;
+    private final Double taxRate;
 
     private final BigDecimal currentPrice;
 
     private final Float stockAmount;
 
-    public ProductResponseDto(String id, Instant createdAt, Instant editedAt, String name, UnitResponseDto unit, BigDecimal taxRate, BigDecimal currentPrice, Float stockAmount) {
+    public ProductResponseDto(String id, Instant createdAt, Instant editedAt, String name, UnitResponseDto unit, Double taxRate, BigDecimal currentPrice, Float stockAmount) {
         super(id, createdAt, editedAt);
         this.name = name;
         this.unit = unit;
@@ -35,7 +35,7 @@ public class ProductResponseDto extends ResponseDto<String> {
         return unit;
     }
 
-    public BigDecimal getTaxRate() {
+    public Double getTaxRate() {
         return taxRate;
     }
 

@@ -8,5 +8,5 @@ import org.enoca.challenge.customer.entities.Customer;
 import org.enoca.challenge.customer.mappers.ICustomerMapper;
 import org.enoca.challenge.customer.repositories.CustomerRepository;
 
-public interface ICustomerService extends IGenericService<CustomerResponseDto, CustomerRequestDto, Customer, String> {
+public interface ICustomerService extends IGenericService<CustomerResponseDto, CustomerRequestDto, Customer, String, ICustomerMapper> {
 }

@@ -11,9 +11,9 @@ public class CustomerResponseDto extends ResponseDto<String> {
 
     private final BigDecimal totalOrders;
 
-    private final Long orderCount;
+    private final Integer orderCount;
 
-    public CustomerResponseDto(String id, Instant createdAt, Instant editedAt, String name, BigDecimal totalOrders, Long orderCount) {
+    public CustomerResponseDto(String id, Instant createdAt, Instant editedAt, String name, BigDecimal totalOrders, Integer orderCount) {
 
         super(id, createdAt, editedAt);
         this.name = name;
@@ -34,7 +34,7 @@ public class CustomerResponseDto extends ResponseDto<String> {
 
     }
 
-    public Long getOrderCount() {
+    public Integer getOrderCount() {
 
         return orderCount;
 

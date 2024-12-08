@@ -1,4 +1,4 @@
-package org.enoca.challenge.chart.entities;
+package org.enoca.challenge.cart.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 @Entity
-public class ChartRow extends BaseEntity<String> {
+public class CartRow extends BaseEntity<String> {
 
     @OneToOne
     private Product product;
@@ -33,7 +33,7 @@ public class ChartRow extends BaseEntity<String> {
 
         return this.product.getCurrentPrice()
                 .divide(BigDecimal.valueOf(100), RoundingMode.valueOf(4))
-                .multiply(product.getTaxRate());
+                .multiply(BigDecimal.valueOf(product.getTaxRate()));
 
     }
 
@@ -88,5 +88,13 @@ public class ChartRow extends BaseEntity<String> {
 
         this.unitPrice = unitPrice;
 
+    }
+
+    public Unit getUnit() {
+        return unit;
+    }
+
+    public void setUnit(Unit unit) {
+        this.unit = unit;
     }
 }

@@ -4,9 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import org.enoca.challenge.core.entities.BaseEntity;
-import org.enoca.challenge.chart.entities.Chart;
+import org.enoca.challenge.cart.entities.Cart;
 import org.enoca.challenge.order.entities.Order;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,10 +16,10 @@ public class Customer extends BaseEntity<String> {
     private String name;
 
     @OneToMany
-    private List<Order> orders;
+    private List<Order> orders = new ArrayList<>();
 
     @OneToOne
-    private Chart chart;
+    private Cart cart;
 
     public String getName() {
         return name;
@@ -29,6 +30,11 @@ public class Customer extends BaseEntity<String> {
     }
 
     public List<Order> getOrders() {
+
+        if(orders == null) {
+            setOrders(new ArrayList<>());
+        }
+
         return orders;
     }
 
@@ -36,11 +42,11 @@ public class Customer extends BaseEntity<String> {
         this.orders = orders;
     }
 
-    public Chart getChart() {
-        return chart;
+    public Cart getCart() {
+        return cart;
     }
 
-    public void setChart(Chart chart) {
-        this.chart = chart;
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 }

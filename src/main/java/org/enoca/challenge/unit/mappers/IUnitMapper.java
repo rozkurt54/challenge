@@ -18,6 +18,7 @@ public interface IUnitMapper extends IMapper<UnitResponseDto, UnitRequestDto, St
     @Mapping(source = "shortName", target = "shortName")
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "editedAt", ignore = true)
     Unit toEntity(UnitRequestDto RequestDto);
 
 }

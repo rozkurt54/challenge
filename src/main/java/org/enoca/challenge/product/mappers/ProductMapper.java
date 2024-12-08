@@ -10,21 +10,23 @@ public class ProductMapper implements IProductMapper {
 
     private final IUnitService iUnitService;
 
-    private final IUnitMapper iUnitMapper;
 
-    public ProductMapper(IUnitService iUnitService, IUnitMapper iUnitMapper) {
+    public ProductMapper(IUnitService iUnitService) {
         this.iUnitService = iUnitService;
-        this.iUnitMapper = iUnitMapper;
+
     }
 
     @Override
     public ProductResponseDto toResponse(Product entity) {
+
+        var unitResponseDto = iUnitService.getOne(entity.getUnit().getId());
+
         return new ProductResponseDto(
                 entity.getId(),
                 entity.getCreatedAt(),
                 entity.getEditedAt(),
                 entity.getName(),
-                iUnitMapper.toResponse(entity.getUnit()),
+                unitResponseDto,
                 entity.getTaxRate(),
                 entity.getCurrentPrice(),
                 entity.getStockQuantity()
@@ -38,7 +40,7 @@ public class ProductMapper implements IProductMapper {
 
         entity.setName(requestDto.getName());
         entity.setUnit(iUnitService.getOneEntity(requestDto.getUnitId()));
-        entity.setStockQuantity(requestDto.getStockQuantity());
+        entity.setStockQuantity(requestDto.getStockAmount());
         entity.setTaxRate(requestDto.getTaxRate());
         entity.setCurrentPrice(requestDto.getCurrentPrice());
 

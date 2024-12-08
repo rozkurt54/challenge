@@ -17,7 +17,7 @@ public abstract class GenericService<
         ID extends Serializable,
         MM extends IMapper<RD, RQD, ID, E>,
         RP extends BaseRepository<ID, E>
-        > implements IGenericService<RD, RQD, E, ID>{
+        > implements IGenericService<RD, RQD, E, ID, MM>{
 
     protected final MM mapper;
 
@@ -76,9 +76,15 @@ public abstract class GenericService<
 
     }
 
+    @Override
     public Boolean existsById(ID id) {
 
         return repository.existsById(id);
 
+    }
+
+    @Override
+    public MM getMapper() {
+        return mapper;
     }
 }

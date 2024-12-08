@@ -17,7 +17,7 @@ public class Product extends BaseEntity<String> {
 
     private Float stockQuantity;
 
-    private BigDecimal taxRate;
+    private Double taxRate;
 
     private BigDecimal currentPrice;
 
@@ -45,15 +45,15 @@ public class Product extends BaseEntity<String> {
 
     }
 
-    public BigDecimal getTaxRate() {
+    public Double getTaxRate() {
 
         return taxRate;
 
     }
 
-    public void setTaxRate(BigDecimal taxRate) {
+    public void setTaxRate(Double taxRate) {
 
-        if (taxRate.compareTo(BigDecimal.ZERO) < 0) {
+        if (taxRate  < 0) {
 
             throw new RuntimeException("Tax rate cannot be less than zero");
 
